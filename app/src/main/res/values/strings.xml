@@ -1,0 +1,36 @@
+<resources>
+    <string name="success_dialog">success dialog</string>
+    <string name="error_dialog">error dialog</string>
+    <string name="image_logo_login">image logo login</string>
+    <string name="image_upload_file">image upload file </string>
+    <string name="enter_your_name">Name</string>
+    <string name="enter_your_surname">Surname</string>
+    <string name="enter_your_email">Email</string>
+    <string name="enter_your_password">Password</string>
+    <string name="app_name">StoriDemoApp</string>
+    <string name="name_error">Invalid Name.</string>
+    <string name="surname_error">Invalid Surname.</string>
+    <string name="email_error">Invalid Email.</string>
+    <string name="password_error">Invalid Password.</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register_title">Create an account</string>
+    <string name="register_description">Please enter details to register.</string>
+    <string name="upload_a_photo_title">Upload an ID photo</string>
+    <string name="upload_a_photo_description">It´s time to capture! Take an ID photo to upload your file and complete the process easily.</string>
+    <string name="success_screen_title">Completed!</string>
+    <string name="success_screen_description">Welcome aboard! You have successfully completed the registration process. Now you can enjoy all the benefits of our banking app.</string>
+    <string name="take_a_photo">Take it</string>
+    <string name="take_a_photo_error">Ups!</string>
+    <string name="take_a_photo_error_description">You must to take a photo of your card ID</string>
+    <string name="next">Next</string>
+    <string name="btn_continue">Continue</string>
+    <string name="accept">Accept</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="not_have_an_Account">Don´t have an account?</string>
+    <string name="sign_up">Signup here</string>
+    <string name="login">Login</string>
+    <string name="stori_loader">stori loader</string>
+    <string name="balance_20_000">Balance: $20,000</string>
+
+</resources>
