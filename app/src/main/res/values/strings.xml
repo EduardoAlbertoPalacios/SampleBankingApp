@@ -1,6 +1,6 @@
 <resources>
     <string name="success_dialog">success dialog</string>
-    <string name="error_dialog">error dialog</string>
+    <string name="error_dialog">Error</string>
     <string name="image_logo_login">image logo login</string>
     <string name="image_upload_file">image upload file </string>
     <string name="enter_your_name">Name</string>
