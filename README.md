@@ -49,3 +49,9 @@ This project implements ViewModels, UseCases and Repositories test cases.
 | Login Path    | Register Path |
 | ------------- | ------------- |
 | <video src =https://github.com/EduardoAlbertoPalacios/SampleBankingApp/assets/26733580/922919e8-6cb7-45e8-95f4-831789f9ed6b> |  <video src =https://github.com/EduardoAlbertoPalacios/SampleBankingApp/assets/26733580/785235e0-9c40-46a7-92cc-0f653c04ec8e > 
+
+
+## Firestore
+
+<img width="1425" alt="Captura de pantalla 2024-05-31 a la(s) 22 50 06" src="https://github.com/EduardoAlbertoPalacios/SampleBankingApp/assets/26733580/36a0ba30-d7a6-4453-af03-681b984d5019">
+
