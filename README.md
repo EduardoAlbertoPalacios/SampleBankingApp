@@ -9,6 +9,9 @@ will be saved in a Firestore database.
 # Language
 The entire project is designed with kotlin language.
 
+- Use of Jetpack compose framework for Login and Register module.
+- Use of XML files and AppCompactActivity class in Home module.
+
 ## Project structure
 The project implement the clean architecture guidelines as follows:
 
@@ -39,7 +42,7 @@ LoginScreen, RegisterScreen  and another components were tested.
 **Unit testing**
 
 These tests focus on testing the individual components and their behavior in isolation.
-This project includes unit tests.
+This project implements ViewModels, UseCases and Repositories test cases.
 
 ## Banking Application
 
