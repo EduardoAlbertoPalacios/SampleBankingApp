@@ -2,6 +2,7 @@ package com.example.storidemoapp.ui.home.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
@@ -30,6 +31,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() { finishAffinity() }
+        })
         adapter = RecyclerViewMovementsAdapter(this)
         binding.cardDetailBalanceTxt.text = getString(R.string.balance_20_000)
         binding.cardDetailRv.adapter = adapter
