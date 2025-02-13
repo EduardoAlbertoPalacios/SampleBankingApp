@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StoriDemoApp"
+rootProject.name = "LoginDemoApp"
 include(":app")
 include(":data")
 include(":domain")
