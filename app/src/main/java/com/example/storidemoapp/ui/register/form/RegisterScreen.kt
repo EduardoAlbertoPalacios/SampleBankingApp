@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -26,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -106,7 +108,7 @@ fun RegisterFormScreenContent(
             )
             goToNextScreen.invoke("${NavigationItem.UploadPhoto.route}/$registerFormModel")
         }
-        val (focusRequester) = FocusRequester.createRefs()
+        val focusManager = LocalFocusManager.current
 
         Text(
             modifier = Modifier.padding(top = MaterialTheme.spacing.dimen16),
@@ -136,11 +138,12 @@ fun RegisterFormScreenContent(
                 placeHolderText = stringResource(R.string.enter_your_name),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 isError = state.isNotValidName,
-                focusRequester = focusRequester,
-                focusManager = LocalFocusManager.current,
                 supportingText = {
                     if (state.isNotValidName) {
                         Text(
@@ -169,11 +172,12 @@ fun RegisterFormScreenContent(
                 placeHolderText = stringResource(R.string.enter_your_surname),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 isError = state.isNotValidSurname,
-                focusRequester = focusRequester,
-                focusManager = LocalFocusManager.current,
                 supportingText = {
                     if (state.isNotValidSurname) {
                         Text(
@@ -202,11 +206,12 @@ fun RegisterFormScreenContent(
                 placeHolderText = stringResource(R.string.enter_your_email),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 isError = state.isNotValidEmail,
-                focusRequester = focusRequester,
-                focusManager = LocalFocusManager.current,
                 supportingText = {
                     if (state.isNotValidEmail) {
                         Text(
@@ -243,14 +248,15 @@ fun RegisterFormScreenContent(
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
                 ),
+                keyboardActions = KeyboardActions(
+                    onDone = { focusManager.clearFocus() }
+                ),
                 visualTransformation = if (state.isPasswordMaskingEnabled) {
                     PasswordVisualTransformation()
                 } else {
                     VisualTransformation.None
                 },
                 isError = state.isNotValidPassword,
-                focusRequester = focusRequester,
-                focusManager = LocalFocusManager.current,
                 supportingText = {
                     if (state.isNotValidPassword) {
                         Text(

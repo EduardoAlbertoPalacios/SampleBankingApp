@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.text.TextStyle
 import com.example.storidemoapp.ui.theme.spacing
 
@@ -30,10 +31,7 @@ fun RoundedTextField(model: RoundedTextFieldModel) {
                 placeholder = { Text(text = placeHolderText) },
                 singleLine = true,
                 keyboardOptions = keyboardOptions,
-                keyboardActions = KeyboardActions(
-                    onDone = { focusManager?.clearFocus() },
-                    onNext = { focusRequester?.requestFocus() }
-                ),
+                keyboardActions = keyboardActions,
                 visualTransformation = visualTransformation,
             )
             supportingText?.invoke()

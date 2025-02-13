@@ -1,5 +1,6 @@
 package com.example.storidemoapp.ui.component.CustomTextfield
 
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,9 +18,8 @@ data class RoundedTextFieldModel(
     val backgroundColor: Color = Color.Transparent,
     val textColor: Color = Color.Black,
     val keyboardOptions: KeyboardOptions,
+    val keyboardActions: KeyboardActions,
     val visualTransformation: VisualTransformation = VisualTransformation.None,
     val isError: Boolean = false,
-    val focusRequester: FocusRequester? = null,
-    val focusManager: FocusManager? = null,
     val supportingText: @Composable (() -> Unit)? = null,
 )
