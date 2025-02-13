@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.shared.commonResult.UIState
 import com.example.storidemoapp.R
-import com.example.storidemoapp.databinding.ActivityHomeBinding
 import com.example.storidemoapp.ui.home.adapter.RecyclerViewMovementsAdapter
 import com.example.storidemoapp.ui.home.viewModel.HomeViewModel
+import com.example.storidemoapp.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

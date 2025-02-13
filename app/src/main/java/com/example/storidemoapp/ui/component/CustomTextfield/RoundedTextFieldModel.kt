@@ -1,15 +1,12 @@
 package com.example.storidemoapp.ui.component.CustomTextfield
 
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.Dp
-import com.example.storidemoapp.ui.theme.spacing
 
 data class RoundedTextFieldModel(
     val value: String,
