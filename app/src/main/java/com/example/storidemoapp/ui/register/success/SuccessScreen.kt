@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.storidemoapp.R
 import com.example.storidemoapp.ui.component.CustomButton.PrimaryButton
-import com.example.storidemoapp.ui.theme.StoriDemoAppTheme
+import com.example.storidemoapp.ui.theme.DemoAppTheme
 import com.example.storidemoapp.ui.theme.caption
 import com.example.storidemoapp.ui.theme.headline5
 import com.example.storidemoapp.ui.theme.spacing
@@ -72,7 +72,7 @@ fun SuccessScreenContent(scrollState: ScrollState, goToNextScreen: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun SuccessScreenPreview() {
-    StoriDemoAppTheme {
+    DemoAppTheme {
         SuccessScreenContent(scrollState = rememberScrollState(), goToNextScreen = {})
     }
 }

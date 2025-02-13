@@ -25,7 +25,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -42,6 +41,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.shared.commonResult.ResponseType
 import com.example.storidemoapp.R
 import com.example.storidemoapp.ui.component.AlertDialog.AlertDialogModel
@@ -51,7 +51,7 @@ import com.example.storidemoapp.ui.component.CustomButton.PrimaryButton
 import com.example.storidemoapp.ui.component.CustomTextfield.RoundedTextField
 import com.example.storidemoapp.ui.component.CustomTextfield.RoundedTextFieldModel
 import com.example.storidemoapp.ui.component.ProgressBar.StoriProgressBar
-import com.example.storidemoapp.ui.theme.StoriDemoAppTheme
+import com.example.storidemoapp.ui.theme.DemoAppTheme
 import com.example.storidemoapp.ui.theme.spacing
 import com.example.storidemoapp.ui.theme.subtitle1
 
@@ -62,7 +62,7 @@ fun LoginScreen(
     goToSignup: () -> Unit
 ) =
     viewModelLogin.apply {
-        val state by state.collectAsState()
+        val state by state.collectAsStateWithLifecycle()
         LoginScreenContent(
             goToSignup = goToSignup,
             state = state,
@@ -103,7 +103,7 @@ fun LoginScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.logo_stori),
+                painter = painterResource(id = R.drawable.img_ids),
                 contentDescription = stringResource(id = R.string.image_logo_login),
                 Modifier
                     .padding(MaterialTheme.spacing.dimen16)
@@ -248,7 +248,7 @@ fun LoginScreenContent(
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenContentPreview() {
-    StoriDemoAppTheme {
+    DemoAppTheme {
         LoginScreenContent(
             state = LoginScreenState(),
             scrollState = rememberScrollState(),

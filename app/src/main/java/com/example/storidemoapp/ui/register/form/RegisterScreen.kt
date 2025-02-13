@@ -42,7 +42,7 @@ import com.example.storidemoapp.navigation.routes.NavigationItem
 import com.example.storidemoapp.ui.component.CustomButton.PrimaryButton
 import com.example.storidemoapp.ui.component.CustomTextfield.RoundedTextField
 import com.example.storidemoapp.ui.component.CustomTextfield.RoundedTextFieldModel
-import com.example.storidemoapp.ui.theme.StoriDemoAppTheme
+import com.example.storidemoapp.ui.theme.DemoAppTheme
 import com.example.storidemoapp.ui.theme.headline6
 import com.example.storidemoapp.ui.theme.spacing
 import com.example.storidemoapp.ui.theme.subtitle1
@@ -298,7 +298,7 @@ fun RegisterFormScreenContent(
 @Preview(showBackground = true)
 @Composable
 fun RegisterFormScreenContentPreview() {
-    StoriDemoAppTheme {
+    DemoAppTheme {
         RegisterFormScreenContent(
             state = RegisterScreenState(),
             scrollState = rememberScrollState(),
