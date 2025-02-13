@@ -7,7 +7,7 @@
     <string name="enter_your_surname">Surname</string>
     <string name="enter_your_email">Email</string>
     <string name="enter_your_password">Password</string>
-    <string name="app_name">StoriDemoApp</string>
+    <string name="app_name">LoginDemoApp</string>
     <string name="name_error">Invalid Name.</string>
     <string name="surname_error">Invalid Surname.</string>
     <string name="email_error">Invalid Email.</string>
