@@ -2,35 +2,25 @@ package com.example.storidemoapp.home
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import com.example.shared.idle.CountingIdling
-import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
 import com.example.storidemoapp.R
 import com.example.storidemoapp.ui.home.activity.HomeActivity
+import com.example.storidemoapp.utils.IdlingTestRule
+import org.junit.Rule
 import org.junit.Test
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class HomeActivityTest {
+    @get:Rule
+    val rule = IdlingTestRule()
+
     @Before
     fun setup() {
-        IdlingRegistry
-            .getInstance()
-            .register(
-                CountingIdling.countingIdlingResource
-            )
         ActivityScenario.launch(HomeActivity::class.java)
-    }
-
-    @After
-    fun finish() {
-        IdlingRegistry
-            .getInstance()
-            .unregister(CountingIdling.countingIdlingResource)
     }
 
     @Test
