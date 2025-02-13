@@ -1,27 +1,20 @@
 package com.example.storidemoapp.picture
 
-import android.net.Uri
-import com.example.domain.entities.MovementsEntity
 import com.example.domain.entities.UserEntity
 import com.example.domain.usecase.UseCase
 import com.example.shared.commonResult.ResponseType
-import com.example.shared.commonResult.UIState
 import com.example.storidemoapp.mocks.mockRegisterFormModel
 import com.example.storidemoapp.ui.register.form.RegisterFormModel
 import com.example.storidemoapp.ui.register.picture.TakePhotoViewModel
 import com.example.storidemoapp.utils.CoroutinesTestRule
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.kotlin.mock
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TakePhotoViewModelTest {

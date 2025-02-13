@@ -10,15 +10,12 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class LoginScreenViewModelTest {
     @get:Rule
     val rule = CoroutinesTestRule()
@@ -36,9 +33,6 @@ class LoginScreenViewModelTest {
         viewModel.also {
             it.changeEmail(INVALID_EMAIL)
             it.verifyInputs()
-
-            advanceUntilIdle()
-
             assert(it._state.value.isNotValidEmail)
         }
     }
@@ -49,9 +43,6 @@ class LoginScreenViewModelTest {
             it.changeEmail(FAKE_EMAIL)
             it.changePassword(INVALID_PASSWORD)
             it.verifyInputs()
-
-            advanceUntilIdle()
-
             assert(it._state.value.isNotValidPassword)
         }
     }
@@ -62,9 +53,6 @@ class LoginScreenViewModelTest {
             it.changeEmail(EMPTY)
             it.changePassword(EMPTY)
             it.verifyInputs()
-
-            advanceUntilIdle()
-
             assert(it._state.value.isNotValidEmail)
             assert(it._state.value.isNotValidPassword)
         }
@@ -84,9 +72,6 @@ class LoginScreenViewModelTest {
         }
         viewModel.also {
             it.doLogin()
-
-            advanceUntilIdle()
-
             assert(it._state.value.responseType == ResponseType.SUCCESS)
         }
 
@@ -109,9 +94,6 @@ class LoginScreenViewModelTest {
         }
         viewModel.also {
             it.doLogin()
-
-            advanceUntilIdle()
-
             assert(it._state.value.responseType == ResponseType.ERROR)
         }
 
