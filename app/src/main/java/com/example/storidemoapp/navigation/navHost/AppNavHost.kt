@@ -1,7 +1,13 @@
 package com.example.storidemoapp.navigation.navHost
 
 import android.content.Intent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
@@ -33,17 +39,24 @@ fun AppNavHost(
         startDestination = startDestination
     ) {
         composable(NavigationItem.Login.route) {
-            LoginScreen(
-                onSuccessLogin = {
-                    context.startActivity(Intent(context, HomeActivity::class.java))
-                },
-                goToSignup = {
-                    navController.navigate(route = NavigationItem.RegisterForm.route)
-                },
-            )
+            CompositionLocalProvider(androidx.lifecycle.compose.LocalLifecycleOwner provides it){
+                    LoginScreen(
+                        onSuccessLogin = {
+                            context.startActivity(Intent(context, HomeActivity::class.java))
+                        },
+                        goToSignup = {
+                            navController.navigate(route = NavigationItem.RegisterForm.route)
+                        },
+                    )
+                }
         }
 
-        composable(NavigationItem.RegisterForm.route) {
+        composable(
+            NavigationItem.RegisterForm.route,
+            enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }) + fadeIn(animationSpec = tween(700)) },
+            exitTransition = { slideOutHorizontally(targetOffsetX = { -1000 }) + fadeOut(animationSpec = tween(700)) },
+            popEnterTransition = { slideInHorizontally(initialOffsetX = { -1000 }) + fadeIn(animationSpec = tween(700)) },
+            popExitTransition = { slideOutHorizontally(targetOffsetX = { 1000 }) + fadeOut(animationSpec = tween(700)) }) {
             RegisterFormScreen(
                 backToLoginScreen = navController::popBackStack,
                 goToNextScreen = { route ->
