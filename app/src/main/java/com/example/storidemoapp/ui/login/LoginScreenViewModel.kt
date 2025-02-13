@@ -1,5 +1,7 @@
 package com.example.storidemoapp.ui.login
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entities.AuthEntity
@@ -22,10 +24,10 @@ import javax.inject.Inject
 class LoginScreenViewModel @Inject constructor(private val useCase: UseCase<AuthEntity, Result<String>>) :
     ViewModel() {
     @VisibleForTesting
-    var _state = MutableStateFlow(LoginScreenState())
-    var state = _state.asStateFlow()
+    var _state = MutableLiveData(LoginScreenState())
+    var state:LiveData<LoginScreenState> = _state
 
-    fun verifyInputs() = _state.value.run {
+    fun verifyInputs() = _state.value?.run {
         when {
             email.isBlank() && password.isBlank() -> updateUIStateInputs(
                 isNotValidEmail = true,
@@ -42,40 +44,46 @@ class LoginScreenViewModel @Inject constructor(private val useCase: UseCase<Auth
 
     @VisibleForTesting
     fun doLogin() = viewModelScope.launch {
-        useCase.execute(AuthEntity(_state.value.email, _state.value.password))
-            .onStart { updateUIState(ResponseType.LOADING) }
-            .collect { result ->
-                if (result.isSuccess) {
-                    updateUIState(ResponseType.SUCCESS)
-                } else {
-                    _state.update {
-                        it.copy(
+        _state.value?.let { AuthEntity(it.email, it.password) }?.let {
+            useCase.execute(it)
+                .onStart { updateUIState(ResponseType.LOADING) }
+                .collect { result ->
+                    if (result.isSuccess) {
+                        updateUIState(ResponseType.SUCCESS)
+                    } else {
+                        _state.value = _state.value?.copy(
                             responseType = ResponseType.ERROR,
                             responseMessageError = result.getOrElse { it.message.notNull() })
                     }
                 }
-            }
+        }
     }
 
-    fun changeEmail(input: String) = _state.update {
-        it.copy(email = input)
+    fun changeEmail(input: String) {
+        _state.value = _state.value?.copy(email = input)
     }
 
-    fun changePassword(input: String) = _state.update {
-        it.copy(password = input)
+
+    fun changePassword(input: String) {
+        _state.value =
+            _state.value?.copy(password = input)
     }
 
-    fun changeResponseTypeToNone() = _state.update {
-        it.copy(responseType = ResponseType.NONE)
+    fun changeResponseTypeToNone() {
+        _state.value =
+            _state.value?.copy(responseType = ResponseType.NONE)
     }
 
-    fun changePasswordMasking(isVisible: Boolean) = _state.update {
-        it.copy(isPasswordMaskingEnabled = isVisible)
+    fun changePasswordMasking(isVisible: Boolean) {
+        _state.value =
+            _state.value?.copy(isPasswordMaskingEnabled = isVisible)
     }
 
-    private fun updateUIState(responseType: ResponseType = ResponseType.NONE) = _state.update {
-        it.copy(responseType = responseType)
+    private fun updateUIState(responseType: ResponseType = ResponseType.NONE) {
+        _state.value =
+            _state.value?.copy(responseType = responseType)
     }
+
 
     private fun updateUIStateInputs(
         isLoading: Boolean = false,
@@ -83,8 +91,8 @@ class LoginScreenViewModel @Inject constructor(private val useCase: UseCase<Auth
         isNotValidPassword: Boolean = false,
         dialogType: AlertDialogType = AlertDialogType.NONE,
         messageDialog: String = "",
-    ) = _state.update {
-        it.copy(
+    ) {_state.value =
+       _state.value?.copy(
             isLoading = isLoading,
             isNotValidEmail = isNotValidEmail,
             isNotValidPassword = isNotValidPassword,

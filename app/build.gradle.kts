@@ -87,6 +87,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.20.3")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.7.7")
     testImplementation("io.mockk:mockk:1.13.3")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("org.mockito:mockito-inline:3.11.2")
